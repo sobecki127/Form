@@ -21,6 +21,19 @@ body {
   font-family: sans-serif;
   height: 100vh;
   font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #dcd9d4;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), to(rgba(0, 0, 0, 0.5))), radial-gradient(at 50% 0%, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.5) 50%);
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), radial-gradient(at 50% 0%, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.5) 50%);
+  background-blend-mode: soft-light, screen;
 }
 
 ul {
@@ -33,10 +46,16 @@ a {
 }
 
 .form-container {
-  margin: 0.25rem;
   background-image: -webkit-gradient(linear, left bottom, left top, from(#6a85b6), to(#bac8e0));
   background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
-  height: 80%;
+  min-height: 80%;
+  max-width: 600px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-shadow: 0 0 88px 0 rgba(0, 0, 0, 0.16);
+          box-shadow: 0 0 88px 0 rgba(0, 0, 0, 0.16);
+  border-radius: 12px;
 }
 
 .form-container form {
@@ -54,13 +73,14 @@ a {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100%;
+  min-height: 100%;
+  width: 100%;
   margin: 2rem;
 }
 
 .form-container form .animated-container {
   position: relative;
-  width: 90%;
+  width: 80%;
   height: 8rem;
   overflow: hidden;
   white-space: nowrap;
@@ -68,12 +88,12 @@ a {
 
 .form-container form .animated-container input {
   background-color: transparent;
-  font-size: 22px;
+  font-size: 2em;
   width: 100%;
   height: 100%;
   color: #595f6e;
   border: none;
-  padding-top: 4.5rem;
+  padding-top: 3.2rem;
   outline: none;
 }
 
@@ -106,6 +126,7 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  min-height: 4rem;
 }
 
 .form-container form .button-container {
@@ -120,10 +141,10 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  min-height: 12rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 9rem;
 }
 
 .form-container form .button-container button {
@@ -145,6 +166,19 @@ a {
 .form-container form .button-container button:active {
   -webkit-transform: scale(0.97);
           transform: scale(0.97);
+}
+
+.form-container form .account-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 4rem;
 }
 
 .animated-container label:after {
