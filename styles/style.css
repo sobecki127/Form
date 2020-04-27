@@ -32,13 +32,14 @@ a {
   text-decoration: none;
 }
 
-.container {
-  margin: 2rem;
-  border: 1px solid blue;
+.form-container {
+  margin: 0.25rem;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#6a85b6), to(#bac8e0));
+  background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
   height: 80%;
 }
 
-.container .form {
+.form-container form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -57,15 +58,16 @@ a {
   margin: 2rem;
 }
 
-.container .form div {
+.form-container form .animated-container {
   position: relative;
   width: 90%;
   height: 8rem;
   overflow: hidden;
+  white-space: nowrap;
 }
 
-.container .form div input[type="email"],
-.container .form div input[type="password"] {
+.form-container form .animated-container input {
+  background-color: transparent;
   font-size: 22px;
   width: 100%;
   height: 100%;
@@ -75,7 +77,7 @@ a {
   outline: none;
 }
 
-.container .form div label.overlay {
+.form-container form .animated-container label {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -85,15 +87,67 @@ a {
   border-bottom: 1px solid lightgray;
 }
 
-.container .form div span {
+.form-container form .animated-container label span {
   position: absolute;
-  bottom: 0em;
+  bottom: 1rem;
   left: 0;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
-label.overlay::after {
+.form-container form .checkbox-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.form-container form .button-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  min-height: 12rem;
+}
+
+.form-container form .button-container button {
+  padding: 1.75rem 3.5rem;
+  background-color: #1fd030;
+  color: rgba(0, 0, 0, 0.6);
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 900;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: -webkit-transform ease-in-out 150;
+  transition: -webkit-transform ease-in-out 150;
+  transition: transform ease-in-out 150;
+  transition: transform ease-in-out 150, -webkit-transform ease-in-out 150;
+}
+
+.form-container form .button-container button:active {
+  -webkit-transform: scale(0.97);
+          transform: scale(0.97);
+}
+
+.animated-container label:after {
   content: "";
   position: absolute;
   left: 0;
@@ -109,16 +163,21 @@ label.overlay::after {
   transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 
-.animated-input:focus + .overlay span,
-.animated-input:valid + .overlay span {
-  -webkit-transform: translateY(-150%);
-          transform: translateY(-150%);
-  color: #5fa8a3;
-}
-
-.animated-input:focus + label.overlay::after,
-.animated-input:valid + label.overlay::after {
+.animated-container input:focus + label:after,
+.animated-container input:valid + label:after {
   -webkit-transform: translateX(0%);
           transform: translateX(0%);
+}
+
+.animated-container input:focus + label span {
+  -webkit-transform: translateY(-150%);
+          transform: translateY(-150%);
+  color: purple;
+}
+
+.animated-container input:valid + label span {
+  -webkit-transform: translateY(-150%);
+          transform: translateY(-150%);
+  color: purple;
 }
 /*# sourceMappingURL=style.css.map */

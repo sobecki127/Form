@@ -2,6 +2,9 @@
   font-size: 10px;
 }
 
+$background: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
+$primary: purple;
+
 html {
   box-sizing: border-box;
 }
@@ -30,12 +33,12 @@ a {
   text-decoration: none;
 }
 
-.container {
-  margin: 2rem;
-  border: 1px solid blue;
+.form-container {
+  margin: 0.25rem;
+  background-image: $background;
   height: 80%;
 
-  .form {
+  form {
     display: flex;
     position: relative;
     justify-content: space-evenly;
@@ -44,13 +47,15 @@ a {
     height: 100%;
     margin: 2rem;
 
-    div {
+    .animated-container {
       position: relative;
       width: 90%;
       height: 8rem;
       overflow: hidden;
-      input[type="email"],
-      input[type="password"] {
+      white-space: nowrap;
+
+      input {
+        background-color: transparent;
         font-size: 22px;
         width: 100%;
         height: 100%;
@@ -58,9 +63,9 @@ a {
         border: none;
         padding-top: 4.5rem;
         outline: none;
-      }
+      } // input
 
-      label.overlay {
+      label {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -68,31 +73,61 @@ a {
         height: 100%;
         pointer-events: none;
         border-bottom: 1px solid lightgray;
-      }
 
-      // label.overlay::after {
-      //   content: "";
-      //   position: absolute;
-      //   left: 0;
-      //   bottom: 0;
-      //   height: 100%;
-      //   width: 100%;
-      //   border-bottom: 3px solid #5fa8a3;
-      //   transform: translateX(-100%);
-      //   transition: transform 0.3s ease;
-      // }
+        span {
+          position: absolute;
+          bottom: 1rem;
+          left: 0;
+          transition: all 0.3s ease;
+        } // span
+      } // label
+    } // .animated-container
 
-      span {
-        position: absolute;
-        bottom: 0em;
-        left: 0;
-        transition: all 0.3s ease;
-      }
-    }
-  }
-}
-// Animation for when an input is in focus
-label.overlay::after {
+    .checkbox-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      input {
+        label {
+          a {
+          } // a
+        } // label
+      } // input
+    } // .checkbox-container
+
+    .button-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 12rem;
+
+      button {
+        padding: 1.75rem 3.5rem;
+        background-color: #1fd030;
+        color: rgba(0, 0, 0, 0.6);
+        border: none;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 900;
+        transform: scale(1);
+        transition: transform ease-in-out 150;
+
+        &:active {
+          transform: scale(0.97);
+        }
+      } // button
+      a {
+      } // a
+    } // .button-container
+  } // form
+} // .form-container
+
+// Animations
+.animated-container label:after {
   content: "";
   position: absolute;
   left: 0;
@@ -104,13 +139,16 @@ label.overlay::after {
   transition: transform 0.3s ease;
 }
 
-.animated-input:focus + .overlay span,
-.animated-input:valid + .overlay span {
-  transform: translateY(-150%);
-  color: #5fa8a3;
+.animated-container input:focus + label:after,
+.animated-container input:valid + label:after {
+  transform: translateX(0%);
 }
 
-.animated-input:focus + label.overlay::after,
-.animated-input:valid + label.overlay::after {
-  transform: translateX(0%);
+.animated-container input:focus + label span {
+  transform: translateY(-150%);
+  color: $primary;
+}
+.animated-container input:valid + label span {
+  transform: translateY(-150%);
+  color: $primary;
 }
