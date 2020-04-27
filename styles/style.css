@@ -35,13 +35,14 @@ a {
 .container {
   margin: 2rem;
   border: 1px solid blue;
-  height: 70%;
+  height: 80%;
 }
 
-form {
+.container .form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
@@ -54,5 +55,70 @@ form {
           flex-direction: column;
   height: 100%;
   margin: 2rem;
+}
+
+.container .form div {
+  position: relative;
+  width: 90%;
+  height: 8rem;
+  overflow: hidden;
+}
+
+.container .form div input[type="email"],
+.container .form div input[type="password"] {
+  font-size: 22px;
+  width: 100%;
+  height: 100%;
+  color: #595f6e;
+  border: none;
+  padding-top: 4.5rem;
+  outline: none;
+}
+
+.container .form div label.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid lightgray;
+}
+
+.container .form div span {
+  position: absolute;
+  bottom: 0em;
+  left: 0;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+label.overlay::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  border-bottom: 3px solid #5fa8a3;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+}
+
+.animated-input:focus + .overlay span,
+.animated-input:valid + .overlay span {
+  -webkit-transform: translateY(-150%);
+          transform: translateY(-150%);
+  color: #5fa8a3;
+}
+
+.animated-input:focus + label.overlay::after,
+.animated-input:valid + label.overlay::after {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
 }
 /*# sourceMappingURL=style.css.map */

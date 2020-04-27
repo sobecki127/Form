@@ -9,13 +9,42 @@
   <body>
     <div class="container">
       <form class="form" action="">
-        <input type="email" id="email" name="email" />
-        <label for="email">Your Email</label>
-        <input type="password" id="password" name="password" />
-        <label for="password">Password</label>
-        <input type="password" id="confirm-password" name="confirm-password" />
-        <label for="confirm-password">Re-enter password</label>
-        <input type="checkbox" id="agreement" name="agreement" />
+        <div>
+          <input
+            class="animated-input"
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="off"
+            required
+          />
+          <label class="overlay" for="email"><span>Your Email</span></label>
+        </div>
+        <div>
+          <input
+            class="animated-input"
+            type="password"
+            id="password"
+            name="password"
+            autocomplete="off"
+            required
+          />
+          <label class="overlay" for="password"><span>Password</span></label>
+        </div>
+        <div>
+          <input
+            class="animated-input"
+            type="password"
+            id="confirm-password"
+            name="confirm-password"
+            autocomplete="off"
+            required
+          />
+          <label class="overlay" for="confirm-password"
+            ><span>Re-enter password</span></label
+          >
+        </div>
+        <input type="checkbox" id="agreement" name="agreement" required />
         <label for="agreement"
           >I agree to the <a href="#">terms and conditions</a></label
         >
