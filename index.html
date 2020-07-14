@@ -3,23 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+      integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./styles/style.css" />
     <title>Form</title>
   </head>
   <body>
     <div class="form-container">
-      <form action="">
-        <div class="animated-container">
+      <form action="" id="register-form">
+        <div class="animated-input-container">
           <input
             type="email"
-            id="email"
+            id="register-email"
             name="email"
             autocomplete="off"
             required
           />
-          <label id="email" for="email"><span>Your Email</span></label>
+          <label for="register-email"><span>Your Email</span></label>
         </div>
-        <div class="animated-container">
+        <div class="animated-input-container">
           <input
             type="password"
             id="password"
@@ -27,9 +33,9 @@
             autocomplete="off"
             required
           />
-          <label for="password"><span>Password</span></label>
+          <label for="register-password"><span>Password</span></label>
         </div>
-        <div class="animated-container">
+        <div class="animated-input-container">
           <input
             type="password"
             id="confirm-password"
@@ -50,10 +56,49 @@
         <div class="button-container">
           <button>Sign up Now</button>
         </div>
-        <div class="account-container">
-          <a href="#">I already have an account</a>
+        <div class="account-link">
+          <a href="#" id="btn" onclick="tabRight()"
+            >I already have an account</a
+          >
+        </div>
+      </form>
+      <!-- log in -->
+      <form action="" id="login-form">
+        <div class="animated-input-container">
+          <input
+            type="email"
+            id="login-email"
+            name="email"
+            autocomplete="off"
+            required
+          />
+          <label for="login-email"><span>Your Email</span></label>
+        </div>
+        <div class="animated-input-container">
+          <input
+            type="password"
+            id="login-password"
+            name="password"
+            autocomplete="off"
+            required
+          />
+          <label for="password"><span>Password</span></label>
+        </div>
+
+        <div class="checkbox-container">
+          <input type="checkbox" id="remember-me" name="agreement" required />
+          <label for="remember-me">Remember Me?</label>
+        </div>
+
+        <div class="button-container">
+          <button>Sign up Now</button>
+        </div>
+        <div class="account-link">
+          <a href="#" onclick="tabLeft()">Create a new account</a>
         </div>
       </form>
     </div>
+
+    <script src="main.js"></script>
   </body>
 </html>

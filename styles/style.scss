@@ -5,6 +5,7 @@
 $page-background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 $form-background: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
 $primary: purple;
+$cta-color: #1fd030;
 
 html {
   box-sizing: border-box;
@@ -17,16 +18,14 @@ html {
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-  font-family: sans-serif;
-  height: 100vh;
-  font-size: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
-  // background-image: $page-background;
+  height: 100vh;
+  line-height: 1.6;
+  font-family: sans-serif;
+  font-size: 16px;
+  padding: 0;
   background-color: #dcd9d4;
   background-image: linear-gradient(
       to bottom,
@@ -39,6 +38,7 @@ body {
       rgba(0, 0, 0, 0.5) 50%
     );
   background-blend-mode: soft-light, screen;
+  margin: 0;
 }
 
 ul {
@@ -51,39 +51,56 @@ a {
 }
 
 .form-container {
-  background-image: $form-background;
-  min-height: 80%;
+  position: relative;
   max-width: 600px;
-  display: flex;
-  box-shadow: 0 0 88px 0 rgba(0, 0, 0, 0.16);
-  // box-shadow: 0 0 88px 0 rgba(0, 0, 0, 0.1607843137254902);
+  min-height: 80%;
+  background-image: $form-background;
   border-radius: 12px;
+  box-shadow: 0 0 88px 0 rgba(0, 0, 0, 0.16);
+  //
+  width: 380px;
+  height: 480px;
+  overflow: hidden;
+
+  // test
+  #register-form {
+    position: absolute;
+    left: 0;
+    transition: all 0.5s;
+  }
+
+  #login-form {
+    position: absolute;
+    left: 100%;
+    transition: all 0.5s;
+  }
+  // end test
 
   form {
+    // position: relative;
     display: flex;
-    position: relative;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    min-height: 100%;
     width: 100%;
-    margin: 2rem;
+    min-height: 100%;
+    // margin: 2rem;
 
-    .animated-container {
+    .animated-input-container {
       position: relative;
       width: 80%;
       height: 8rem;
-      overflow: hidden;
       white-space: nowrap;
+      overflow: hidden;
 
       input {
-        background-color: transparent;
-        font-size: 2em;
         width: 100%;
         height: 100%;
+        background-color: transparent;
         color: #595f6e;
-        border: none;
+        font-size: 2em;
         padding-top: 3.2rem;
+        border: none;
         outline: none;
       } // input
 
@@ -93,8 +110,8 @@ a {
         left: 0;
         width: 100%;
         height: 100%;
-        pointer-events: none;
         border-bottom: 1px solid lightgray;
+        pointer-events: none;
 
         span {
           position: absolute;
@@ -106,45 +123,77 @@ a {
     } // .animated-container
 
     .checkbox-container {
-      width: 100%;
+      margin-top: 1rem;
+      height: 3rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 4rem;
+      position: relative;
+      cursor: pointer;
+
+      label {
+        cursor: pointer;
+      }
 
       input {
-        label {
-          a {
-          } // a
-        } // label
-      } // input
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      label::before {
+        content: "";
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        left: -2rem;
+        top: 50%;
+        transform: translate(0, -50%);
+        width: 1.6rem;
+        height: 1.6rem;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        border: 1px solid black;
+      }
+
+      input:checked ~ label::before {
+        content: "\f00c";
+      } // check font
     } // .checkbox-container
 
     .button-container {
-      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      width: 100%;
       min-height: 9rem;
 
       button {
-        padding: 1.75rem 3.5rem;
-        background-color: #1fd030;
-        color: rgba(0, 0, 0, 0.6);
-        border: none;
-        cursor: pointer;
         display: inline-block;
+        background-color: $cta-color;
+        color: rgba(0, 0, 0, 0.6);
         font-weight: 900;
+        padding: 1.75rem 3.5rem;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        outline: none;
         transform: scale(1);
         transition: transform ease-in-out 150;
 
+        &:hover,
+        &:focus {
+          transform: scale(1.05);
+        }
+
         &:active {
-          transform: scale(0.97);
+          transform: scale(1);
         }
       } // button
     } // .button-container
-    .account-container {
+    .account-link {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -156,28 +205,32 @@ a {
 } // .form-container
 
 // Animations
-.animated-container label:after {
+.animated-input-container label:after {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
-  height: 100%;
   width: 100%;
-  border-bottom: 3px solid #5fa8a3;
+  height: 100%;
+  border-bottom: 3px solid $cta-color;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
 
-.animated-container input:focus + label:after,
-.animated-container input:valid + label:after {
+.animated-input-container input:focus + label:after,
+.animated-input-container input:valid + label:after {
   transform: translateX(0%);
 }
 
-.animated-container input:focus + label span {
-  transform: translateY(-150%);
-  color: $primary;
-}
-.animated-container input:valid + label span {
-  transform: translateY(-150%);
-  color: $primary;
+// .animated-input-container input:focus + label span {
+//   transform: translateY(-150%);
+//   color: $primary;
+// }
+// .animated-input-container input:valid + label span {
+//   transform: translateY(-150%);
+//   color: $primary;
+// }
+
+.animated-input-container label span {
+  transform: translateY(0);
 }
